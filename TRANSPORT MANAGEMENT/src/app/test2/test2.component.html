@@ -1,0 +1,148 @@
+<!--menu bar-->
+<mat-toolbar class="mat-elevation-z8">
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  STAFF DETAILS
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img class="avatar mat-elevation-z8" src="assets/logo.png" />
+    <div class="welcome">
+      <button mat-button>
+        <span>welcome </span>
+      </button>
+    </div>
+    <h5 class="name">{{Email}}</h5>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/test1">
+      <mat-icon>create</mat-icon>
+      <span>Bus Details </span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon>create</mat-icon>
+      <span>Staff Details </span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/test4">
+      <mat-icon>create</mat-icon>
+      <span>Salary Details</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/test5">
+      <mat-icon>book</mat-icon>
+      <span>Bus Data</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/test7">
+      <mat-icon>book</mat-icon>
+      <span>Staff Data</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/test10">
+      <mat-icon>book</mat-icon>
+      <span>Salary Data</span>
+    </button>
+
+    <mat-divider></mat-divider>
+    <button mat-button class="menu-button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Log out</span>
+    </button>
+  </mat-sidenav>
+
+
+  <!--form-->
+  <h1 class="h1">STAFF DETAILS</h1>
+
+  <body class="centaner">
+    <div class="bus-form">
+      <form [formGroup]="employeeFormGroup" (ngsubmit)="registersubmited()" class="form-form">
+        <div class="form-group">
+
+          <label for="name">Name:</label>
+          <input type="text" id="field_name" name="field_name" placeholder="Staff Name" formControlName="field_name"
+            required>
+
+          <div class="error-text" *ngIf="field_name.errors?.['required'] && (field_name.touched ||field_name.dirty )">
+            Staff Name is Required.
+          </div>
+
+          <div class="error-text" *ngIf="field_name.errors?.['pattern'] && (field_name.touched ||field_name.dirty )">
+            Staff Name should start with alphabet.
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" id="employee_name" name="employee_name" placeholder="Age" formControlName="employee_name"
+            pattern="[0-9]+" required>
+          <div class="error-text"
+            *ngIf="employee_name.errors?.['required'] && (employee_name.touched ||employee_name.dirty )">
+            Age is Required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender" formControlName="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="gender">Staff:</label>
+          <select id="staff" name="staff" formControlName="staff" required>
+            <option value="Dirver">Dirver</option>
+            <option value="Conductor">Conguctor</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="contact">Contact No. :</label>
+
+          <input type="tel" id="contact" name="contact" placeholder="000-000-0000" formControlName="contact"
+            pattern="[0-9]{10}" required>
+          <div class="error-text" *ngIf="contact.errors?.['required'] && (contact.touched ||contact.dirty )">
+            Contact Number is Required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" formControlName="email" placeholder="Email" required>
+          <div class="error-text" *ngIf="email.errors?.['required'] && (email.touched ||email.dirty )">
+            Email is Required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <textarea type="text" id="address" name="address" rows="4" placeholder="Address" formControlName="address"
+            required></textarea>
+          <div class="error-text" *ngIf="address.errors?.['required'] && (address.touched ||address.dirty )">
+            Address is Required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="designation">Designation:</label>
+          <input type="text" id="designation" name="designation" placeholder="Designation" formControlName="designation"
+            required>
+          <div class="error-text"
+            *ngIf="designation.errors?.['required'] && (designation.touched ||designation.dirty )">
+            Designation is Required.
+          </div>
+        </div>
+
+        <div class="button-container">
+          <button value="Save" type="submit" (click)="saveAction()">save</button>
+          <button value="Fetch" (click)="fetchAction()">fetch</button>
+        </div>
+      </form>
+    </div>
+  </body>

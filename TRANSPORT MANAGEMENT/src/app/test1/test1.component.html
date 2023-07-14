@@ -1,0 +1,114 @@
+<!-- Menu bar -->
+<mat-toolbar class="mat-elevation-z8">
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  BUS DETAILS
+</mat-toolbar>
+
+<!-- Sidenav and Menu items -->
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img class="avatar mat-elevation-z8" src="assets/logo.png" />
+    <div class="welcome">
+      <button mat-button>
+        <span>welcome</span>
+      </button>
+    </div>
+    <h5 class="name">{{Email}}</h5>
+    <mat-divider></mat-divider>
+    <button mat-button class="menu-button">
+      <mat-icon>create</mat-icon>
+      <span>Bus Details</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/test2">
+      <mat-icon>create</mat-icon>
+      <span>Staff Details</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/test4">
+      <mat-icon>create</mat-icon>
+      <span>Salary Details</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-button class="menu-button" routerLink="/test5">
+      <mat-icon>book</mat-icon>
+      <span>Bus Data</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/test7">
+      <mat-icon>book</mat-icon>
+      <span>Staff Data</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/test10">
+      <mat-icon>book</mat-icon>
+      <span>Salary Data</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-button class="menu-button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Log out</span>
+    </button>
+  </mat-sidenav>
+
+  <!-- Form -->
+  <h1 class="h1">BUS DETAILS</h1>
+  <div class="bus-form">
+    <form [formGroup]="employeeFormGroup" (ngsubmit)="registersubmited()"  class="form-form">
+      <div class="form-group">
+        <label for="bus-name">Bus Name:</label>
+        <input type="text"  name="bus-name" placeholder="Bus Name"  formControlName="field_name"   required>
+
+
+        <div class="error-text" *ngIf="BusName.errors?.['required'] && (BusName.touched ||BusName.dirty )" >
+          Bus Name is Required.
+        </div>
+
+        <div class="error-text" *ngIf="BusName.errors?.['pattern'] && (BusName.touched ||BusName.dirty )" >
+          Bus Name should start with alphabet.
+        </div>
+
+        
+
+      </div>
+      <div class="form-group">
+        <label for="bus-type">Bus Type:</label>
+        <select name="busType" id="busType" formControlName="bus_type"  required>
+          <option value="AC">AC</option>
+          <option value="Non-AC">Non-AC</option>
+          <option value="Sleeper" selected>Sleeper</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="seats">Number of Seats:</label>
+        <input type="number" id="seats" name="seats" formControlName="seats" placeholder="Number Of Seats" pattern="[0-9]+" required>
+        <div class="error-text " *ngIf="Seats.errors?.['required'] && (Seats.touched ||Seats.dirty )">
+          Number of Seats is Required.
+        </div>
+      
+      </div>
+      <div class="form-group">
+        <label for="departure-time">Departure Time:</label>
+        <input type="time" id="departure-time" name="departure-time" placeholder="Departure Time" formControlName="departure-time" required>
+      </div>
+      <div class="form-group">
+        <label for="arrival-time">Arrival Time:</label>
+        <input type="time" id="arrival-time" name="arrival-time" formControlName="arrival-time" placeholder="Arrival Time" required>
+      </div>
+      <div class="form-group">
+        <label for="kilometers">Kilometers:</label>
+        <input type="number" id="kilometers" name="kilometers" formControlName="kilometers" placeholder="Kilometers" required>
+        <div class="error-text " *ngIf="Kilometers.errors?.['required'] &&  (Kilometers.touched ||Kilometers.dirty )">
+         Kilometers is Required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fare">Fare:</label>
+        <input type="text" id="fare" name="fare" placeholder="Fare" formControlName="fare" [value]="calculateFare()" readonly>
+      </div>
+      <div class="button-container">
+        <button value="Save" type="submit" (click)="saveAction()">Save</button>
+        <button value="Fetch" (click)="fetchAction()">Fetch</button>
+      </div>
+    </form>
+  </div>
+</mat-sidenav-container>

@@ -1,0 +1,97 @@
+<mat-toolbar class="mat-elevation-z8">
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  STAFF DETAILS
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img class="avatar mat-elevation-z8" src="assets/logo.png" />
+    <div class="welcome">
+      <button mat-button>
+        <span>welcome </span>
+      </button>
+    </div>
+    <h5 class="name"></h5>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/test1">
+      <mat-icon>create</mat-icon>
+      <span>Bus Details </span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/test2">
+      <mat-icon>create</mat-icon>
+      <span>Staff Details </span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon>create</mat-icon>
+      <span>Salary Details</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/test5">
+      <mat-icon>book</mat-icon>
+      <span>Bus Data</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/test7">
+      <mat-icon>book</mat-icon>
+      <span>Staff Data</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/test10">
+      <mat-icon>book</mat-icon>
+      <span>Salary Data</span>
+    </button>
+
+    <mat-divider></mat-divider>
+    <button mat-button class="menu-button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Log out</span>
+    </button>
+  </mat-sidenav>
+
+
+
+
+  <h1 class="h1">SALARY DETAILS</h1>
+
+  <body class="centaner">
+    <div class="bus-form">
+      <form class="form-form" (ngSubmit)="calculateSalary()" #salaryForm="ngForm">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" [(ngModel)]="name" name="name" placeholder="Name" required>
+          <div *ngIf="salaryForm.controls['name'].touched && salaryForm.controls['name'].invalid" class="error-message">
+            Enter Name.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">Basic Salary:</label>
+          <input type="number" [(ngModel)]="basicSalary" placeholder="Basic Salary" name="basicSalary" required>
+          <div *ngIf="salaryForm.controls['basicSalary'].touched && salaryForm.controls['basicSalary'].invalid"
+            class="error-message">
+            Enter Basic Salary.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="position">Allowance:</label>
+          <input type="number" [(ngModel)]="allowance" placeholder="Allowance" name="allowance" required>
+          <div *ngIf="salaryForm.controls['allowance'].touched && salaryForm.controls['allowance'].invalid"
+            class="error-message">
+            Enter Allowance.
+          </div>
+        </div>
+
+
+        <div class="button-container">
+          <button class="but" type="submit" [disabled]="salaryForm.invalid">Save</button>
+        </div>
+      </form>
+    </div>
+  </body>

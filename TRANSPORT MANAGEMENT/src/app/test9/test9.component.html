@@ -1,0 +1,19 @@
+<!-- Eedit form -->
+
+<h2>Edit Salary</h2>
+<form (ngSubmit)="updateSalary()" #editForm="ngForm">
+  <label>
+    Name:
+    <input type="text" [(ngModel)]="editSalaryData.name" name="name" required>
+  </label>
+  <label>
+    Basic Salary:
+    <input type="number" [(ngModel)]="editSalaryData.basicSalary" name="basicSalary" required>
+  </label>
+  <label>
+    Allowance:
+    <input type="number" [(ngModel)]="editSalaryData.allowance" name="allowance" required>
+  </label>
+  <button type="submit">Update</button>
+  <button type="button" (click)="cancelEdit()">Cancel</button>
+</form>

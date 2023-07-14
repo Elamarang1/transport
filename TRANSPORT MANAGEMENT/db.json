@@ -1,0 +1,46 @@
+{
+  "salaryData": [
+    {
+      "name": "elamaran",
+      "basicSalary": 1,
+      "allowance": 1,
+      "totalSalary": 2,
+      "id": 10
+    },
+    {
+      "name": "qwertyui",
+      "basicSalary": 7,
+      "allowance": 7,
+      "totalSalary": 14,
+      "id": 18
+    },
+    {
+      "name": "1",
+      "basicSalary": 1,
+      "allowance": 1,
+      "totalSalary": 2,
+      "id": 19
+    },
+    {
+      "name": "1",
+      "basicSalary": 1,
+      "allowance": 1,
+      "totalSalary": 2,
+      "id": 20
+    },
+    {
+      "name": "q",
+      "basicSalary": 7,
+      "allowance": 7,
+      "totalSalary": 14,
+      "id": 21
+    },
+    {
+      "name": "q",
+      "basicSalary": 7,
+      "allowance": 7,
+      "totalSalary": 14,
+      "id": 22
+    }
+  ]
+}
