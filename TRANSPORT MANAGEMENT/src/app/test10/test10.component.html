@@ -63,7 +63,7 @@
   <h2>Salary Details</h2>
   <div class="display">
     <input type="text" [(ngModel)]="searchTerm" placeholder="Search" (input)="applySearch()">
-    <table mat-table [dataSource]="salaryData" mat-table [dataSource]="filteredSalaryData">
+    <table mat-table [dataSource]="salaryData">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let element">{{ element.name }}</td>
